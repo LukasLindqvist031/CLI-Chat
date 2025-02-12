@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CLI_Chat.Server.Models
 {
-    internal class User
+    public class User
     {
+        public string Username { get; set; }
     }
 }

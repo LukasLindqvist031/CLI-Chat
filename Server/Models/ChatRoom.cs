@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace CLI_Chat.Server.Models
 {
-    internal class ChatRoom
+    public class ChatRoom
     {
+        public string Name { get; set; }
+        public List<User> Users { get; set; } = new List<User>();
+        public List<Message> Messages { get; set; } = new List<Message>();
     }
 }

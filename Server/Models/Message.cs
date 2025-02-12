@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace CLI_Chat.Server.Models
 {
-    internal class Message
+    public class Message
     {
+        public User Sender { get; set; }
+        public string Content { get; set; }
     }
 }
