@@ -13,12 +13,12 @@ namespace CLI_Chat.Server.Networking
     public class Server
     {
         private readonly TcpListener _listener;
-        private readonly ChatService _chatService;
+        private readonly string _serverName;
 
-        public Server(string ipAdress, int port)
+        public Server(string ipAdress, int port, string serverName)
         {
             _listener = new TcpListener(IPAddress.Parse(ipAdress), port);
-            _chatService = new ChatService();
+            _serverName = serverName;
         }
 
         public async Task StartAsync()
@@ -29,7 +29,8 @@ namespace CLI_Chat.Server.Networking
             while (true)
             {
                 var client = await _listener.AcceptTcpClientAsync();
-                //Additional functionality
+                var handler = new ClientHandler(client, _serverName);
+                _ = handler.HandleClientAsync();
             }
 
         }
